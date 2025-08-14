@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لحبيبتي 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root{
+      --bg: radial-gradient(1200px 800px at 80% -10%, #ff99c8 0%, transparent 60%),
+            radial-gradient(1000px 600px at 10% 110%, #a0c4ff 0%, transparent 60%),
+            linear-gradient(135deg, #0f172a, #111827);
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.18);
+      --txt: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #ff7ab6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Cairo",system-ui,Segoe UI,Arial;
+      color:var(--txt);
+      background:var(--bg);
+      overflow-x:hidden;
+    }
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .card{
+      width:min(720px, 95vw);
+      background:var(--glass);
+      border:1px solid var(--border);
+      backdrop-filter: blur(16px) saturate(140%);
+      border-radius:24px;
+      padding:24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      animation: rise .8s ease both;
+    }
+    @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(22px, 3.5vw, 30px);
+      letter-spacing:.3px;
+    }
+    p.sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .tab{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.05);
+      padding:10px 14px;
+      border-radius:14px;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .1s ease, background .2s ease;
+      font-size:14px;
+    }
+    .tab[aria-selected="true"]{
+      background:rgba(255,255,255,0.12);
+      outline:2px solid rgba(255,255,255,0.15);
+    }
+    .tab:active{transform:scale(.98)}
+
+    .input-row{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      margin:10px 0 14px;
+    }
+    input[type="text"], input[type="date"]{
+      flex:1 1 260px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      border-radius:14px;
+      color:var(--txt);
+      padding:12px 14px;
+      font-size:16px;
+      outline:none;
+      transition:border .2s ease, box-shadow .2s ease;
+    }
+    input::placeholder{color:#cbd5e199}
+    input:focus{
+      border-color:#ffffff66;
+      box-shadow:0 0 0 4px #ffffff1e;
+    }
+    button.primary{
+      background:linear-gradient(135deg, #ff8fb1, #ffa5d8);
+      color:#1f2937;
+      border:none;
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .08s ease, filter .2s ease;
+    }
+    button.primary:hover{filter:brightness(1.05)}
+    button.primary:active{transform:translateY(1px)}
+
+    .panel{
+      border:1px dashed rgba(255,255,255,0.25);
+      border-radius:16px;
+      padding:16px;
+      min-height:140px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .fade{animation:fade .35s ease both}
+    @keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+
+    .note{
+      font-size:12px; color:#e5e7eb99; margin-top:8px;
+    }
+
+    /* Floating hearts */
+    .heart{
+      position:absolute; font-size:18px; opacity:.85; animation:float 4.5s linear forwards;
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+      pointer-events:none;
+    }
+    @keyframes float{
+      from{transform:translateY(0) scale(1)}
+      to{transform:translateY(-180px) scale(1.2); opacity:0}
+    }
+
+    /* Confetti canvas sits behind content */
+    #confetti{
+      position:absolute; inset:0; z-index:0; pointer-events:none;
+    }
+
+    .result{
+      position:relative; z-index:1;
+    }
+    .chips{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+    .chip{
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      padding:6px 10px; border-radius:999px; font-size:12px; color:#e2e8f0;
+    }
+
+    a.btn-link{
+      display:inline-block; margin-top:10px; font-size:14px; color:#fdf2f8; text-decoration:none;
+      border-bottom:1px dashed #fdf2f8;
+    }
+    a.btn-link:hover{opacity:.9}
+    footer{
+      text-align:center; font-size:12px; color:#cbd5e199; margin-top:14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>هدية صغيرة لكِ يا جميلة 💌</h1>
+      <p class="sub">اكتبي <b>اسمك</b> أو اختاري <b>تاريخ ميلادك</b> أو <b>تاريخ تعارفنا</b> — وفي كل مرة يطلع لك شيء مختلف 💫</p>
+
+      <div class="tabs" role="tablist" aria-label="اختيار النوع">
+        <button class="tab" role="tab" aria-selected="true" data-mode="name">اسمك</button>
+        <button class="tab" role="tab" aria-selected="false" data-mode="birthday">تاريخ ميلادك</button>
+        <button class="tab" role="tab" aria-selected="false" data-mode="anniv">تاريخ تعارفنا</button>
+      </div>
+
+      <form id="form" onsubmit="handleSubmit(event)">
+        <div class="input-row">
+          <input id="nameInput" type="text" placeholder="اكتبي اسمك هنا يا قلبي" autocomplete="off">
+          <input id="dateInput" type="date" style="display:none">
+          <button class="primary" type="submit">أبهِريني ✨</button>
+        </div>
+      </form>
+
+      <div class="panel" id="panel">
+        <canvas id="confetti"></canvas>
+        <div id="result" class="result">
+          <div class="fade">جاهزة؟ اختاري النوع فوق وخلّينا نبدأ 🤍</div>
+        </div>
+      </div>
+
+      <div class="chips" id="chips"></div>
+      <div class="note">ملاحظة: المقتطف من أغنية <i>Perfect</i> قصير ومحمي بحقوق، لذلك أظهرنا اقتباسًا وجيزًا فقط.</div>
+
+      <footer>صُنِع بحُب 💗</footer>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const nameInput = document.getElementById('nameInput');
+    const dateInput = document.getElementById('dateInput');
+    const chips = document.getElementById('chips');
+
+    let mode = 'name';
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.setAttribute('aria-selected', 'false'));
+      t.setAttribute('aria-selected', 'true');
+      mode = t.dataset.mode;
+      if(mode === 'name'){
+        nameInput.style.display='block';
+        dateInput.style.display='none';
+        nameInput.focus();
+      }else{
+        nameInput.style.display='none';
+        dateInput.style.display='block';
+        dateInput.focus();
+      }
+      clearResult();
+    }));
+
+    function clearResult(){
+      document.getElementById('result').innerHTML =
+        `<div class="fade">اكتبـي/اختاري المدخل، وشوفي السحر ✨</div>`;
+      chips.innerHTML = '';
+    }
+
+    const compliments = [
+      "ابتسامتك تشبه الفجر، كل يوم لها شروق.",
+      "وجودك يخلّي الدنيا أخفّ وأجمل.",
+      "أحب التفاصيل الصغيرة اللي ما ينتبه لها أحد غيري فيك.",
+      "قلبك الطيب أغلى نعمة عندي.",
+      "صوتك يهدّي كل ضجيج داخلي.",
+      "عيونك تسرّب السلام لروحي.",
+      "يا بعد روحي، وجودك مو صدفة، هدية."
+    ];
+
+    const perfectSnippet = "Darling, you look perfect tonight";
+
+    const moments = [
+      "أول نظرة: عرفت إن قلبي لقى مكانه.",
+      "أول ضحكة منك: علّمتني معنى الفرح.",
+      "أول كلمة حلوة: ما زالت ترنّ بقلبي.",
+      "أول مشوار سوا: الطريق حفظ أسمائنا.",
+      "من يومها وأنا ممتن لكل ثانية تجمعنا."
+    ];
+
+    function randomPick(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+
+    function spawnHeart(el){
+      const heart = document.createElement('div');
+      heart.className='heart';
+      heart.textContent = Math.random() > .5 ? '💖' : '💞';
+      const x = Math.random()*80 + 10;
+      heart.style.left = x + '%';
+      heart.style.bottom = '0';
+      heart.style.fontSize = (16 + Math.random()*18) + 'px';
+      el.appendChild(heart);
+      setTimeout(() => heart.remove(), 4600);
+    }
+
+    const confettiCanvas = document.getElementById('confetti');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiPieces = [];
+    function resizeCanvas(){
+      const panel = document.getElementById('panel');
+      confettiCanvas.width = panel.clientWidth;
+      confettiCanvas.height = panel.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    function makeConfetti(){
+      confettiPieces = Array.from({length: 120}, () => ({
+        x: Math.random()*confettiCanvas.width,
+        y: -10 - Math.random()*confettiCanvas.height/2,
+        r: 3+Math.random()*4,
+        vx: -1+Math.random()*2,
+        vy: 1+Math.random()*2.5,
+        rot: Math.random()*Math.PI,
+        vr: -0.1+Math.random()*0.2
+      }));
+      animateConfetti();
+      setTimeout(()=> confettiPieces=[], 3000);
+    }
+    function animateConfetti(){
+      if(!confettiPieces.length) return;
+      ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+      confettiPieces.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = `hsl(${Math.random()*360},80%,70%)`;
+        ctx.fillRect(-p.r, -p.r, p.r*2, p.r*2);
+        ctx.restore();
+      });
+      requestAnimationFrame(animateConfetti);
+    }
+
+    function parseDate(val){
+      const d = new Date(val);
+      return isNaN(d) ? null : d;
+    }
+    function daysUntilNextBirthday(date){
+      const now = new Date();
+      const thisYear = new Date(now.getFullYear(), date.getMonth(), date.getDate());
+      const next = thisYear >= stripTime(now) ? thisYear : new Date(now.getFullYear()+1, date.getMonth(), date.getDate());
+      const diff = Math.ceil((next - stripTime(now)) / (1000*60*60*24));
+      return {days: diff, nextDate: next};
+    }
+    function stripTime(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()) }
+    function diffFrom(date){
+      const now = new Date();
+      let ms = now - date;
+      if(ms < 0) ms = 0;
+      const days = Math.floor(ms / (1000*60*60*24));
+      const years = Math.floor(days/365.25);
+      const months = Math.floor((days % 365.25)/30.44);
+      const remDays = Math.max(0, Math.round(days - years*365.25 - months*30.44));
+      return {years, months, days: remDays, totalDays: days};
+    }
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const res = document.getElementById('result');
+      const panel = document.getElementById('panel');
+      res.innerHTML = '';
+
+      if(mode === 'name'){
+        const name = (nameInput.value || '').trim();
+        if(!name){ res.innerHTML = `<div class="fade">اكتبي اسمك أول يا حلوة 🌸</div>`; return }
+        const lines = [
+          `<h2 class="fade">يا ${escapeHtml(name)}، ${randomPick(compliments)}</h2>`,
+          `<p class="fade" style="opacity:.9;margin-top:6px">“${perfectSnippet}” — <i>Perfect</i></p>`,
+          `<a class="btn-link fade" href="https://open.spotify.com/search/Ed%20Sheeran%20Perfect" target="_blank" rel="noopener">استمعي للمقطوعة 🎧</a>`
+        ];
+        res.innerHTML = lines.join('');
+        chips.innerHTML = `<span class="chip">رسالة محبة</span><span class="chip">اقتباس قصير</span><span class="chip">رابط تشغيل</span>`;
+        for(let i=0;i<12;i++){ setTimeout(()=>spawnHeart(panel), i*120) }
+
+      } else if(mode === 'birthday'){
+        const d = parseDate(dateInput.value);
+        if(!d){ res.innerHTML = `<div class="fade">اختاري تاريخ ميلادك يا قمر 🎂</div>`; return }
+        const {days, nextDate} = daysUntilNextBirthday(d);
+        const pretty = nextDate.toLocaleDateString('ar-SA', {year:'numeric', month:'long', day:'numeric'});
+        res.innerHTML = `
+          <div class="fade">
+            <h2>باقي <b>${days}</b> يوم 🎉</h2>
+            <p class="sub" style="margin-top:6px">نحتفل في <b>${pretty}</b> — جهّزت المفاجآت! 🥳</p>
+          </div>
+        `;
+        chips.innerHTML = `<span class="chip">عدّاد عيد الميلاد</span><span class="chip">احتفال</span>`;
+        makeConfetti();
+
+      } else if(mode === 'anniv'){
+        const d = parseDate(dateInput.value);
+        if(!d){ res.innerHTML = `<div class="fade">حددي تاريخ تعارفنا ❤️</div>`; return }
+        const diff = diffFrom(d);
+        const msg = `
+          <h2 class="fade">مرّ علينا: <b>${diff.years}</b> سنة، <b>${diff.months}</b> شهر، و <b>${diff.days}</b> يوم 💞</h2>
+          <p class="sub fade" style="margin-top:6px">الإجمالي: ${diff.totalDays} يوم من الحُب.</p>
+          <ul class="fade" style="list-style:none;padding:0;margin:10px 0 0;line-height:1.9">
+            ${shuffle(moments).slice(0,3).map(m=>`<li>• ${m}</li>`).join('')}
+          </ul>
+        `;
+        res.innerHTML = msg;
+        chips.innerHTML = `<span class="chip">ذكرى جميلة</span><span class="chip">رسائل قلبية</span>`;
+        for(let i=0;i<10;i++){ setTimeout(()=>spawnHeart(panel), i*160) }
+      }
+    }
+
+    function shuffle(arr){
+      return [...arr].sort(()=>Math.random()-.5);
+    }
+    function escapeHtml(s){
+      return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    }
+
+    nameInput.focus();
+  </script>
+</body>
+</html>
